@@ -188,7 +188,7 @@ Inside the `lib` directory, create a new file called `animal.rb`. Inside it, cre
 * `age`
 * `favorite_food`
 
-Set `name` and `age in the constructor. Make `name` 'read-only', and make `age` totally private. Make `favorite_food` both readable and writeable.
+Set `name` and `age` in the constructor. Make `name` 'read-only', and make `age` totally private. Make `favorite_food` both readable and writeable.
 
 
 #### On Your Own!
