@@ -205,7 +205,7 @@ It should also have a method called `calculate_area`, which calculates the area 
 where n is the number of sides, and s is the length of the side.
 
 #####HINT:
-Ruby has a Module for performing mathematics called [Math](http://ruby-doc.org/core-2.2.0/Math.html); it has a lot of useful methods and properties that can help you out here. The `Math` module is one of Ruby's default modules, so Ruby already knows how to find it; to add it to your Shape object, and gain access to those methods and properties, use the `include` keyword.
+Ruby has a [module for performing mathematics](http://ruby-doc.org/core-2.2.0/Math.html) called `Math`; it has a lot of useful methods and properties that can help you out here. The `Math` module is one of Ruby's default modules, so Ruby already knows how to find it; to add it to your Shape object, and gain access to those methods and properties, use the `include` keyword.
 
 
 
