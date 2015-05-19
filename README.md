@@ -200,7 +200,7 @@ Create another file in the `lib` directory called `shape.rb`. Inside it, create 
 
 It should also have a method called `calculate_area`, which calculates the area of a 'regular' shape (all sides equal) for the given side length. The [mathematical formula](http://www.mathopenref.com/polygonregulararea.html) for this is
 
-`A = n * s^2 / (4* tangent(Pi/n))`
+`A = n * s * s / (4 * tangent(PI/n))`
 
 where n is the number of sides, and s is the length of the side.
 
