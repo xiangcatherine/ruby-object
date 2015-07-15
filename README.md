@@ -8,17 +8,17 @@
 
 ## Introduction
 
-Yesterday, you learned about hashes in Ruby. In JavaScript, there's no distinction between Objects and key-value pairs (a.k.a. hashes, a.k.a. asociative arrays), and in fact, JavaScript objects look and behave similarly to Ruby hashes. However, objects in Ruby behave differently from objects in JS.
+Yesterday, you learned about hashes in Ruby. In JavaScript, there's no distinction between Objects and key-value pairs (a.k.a. hashes, a.k.a. associative arrays), and in fact, JavaScript objects look and behave similarly to Ruby hashes. However, objects in Ruby behave differently from objects in JS.
 
 ## Objectives
 
 By the end of this lesson, students should be able to:
 
-- Explain some of the differences between Hashes and Objects within Ruby, including:
-    - instantiating new objects
-    - creating new properties
-    - accessibility/privacy
-- Define a class for an arbitrary object and instatiate it.
+- Explain some of the differences between hashes and objects within Ruby:
+    - Instantiating new objects.
+    - Creating new properties.
+    - Accessing properties.
+- Define a class for an arbitrary object and instantiate it.
 
 
 ## What is an Object?
@@ -124,7 +124,7 @@ phil.doScience();        // "SCIENCE!!"
 phil.bestFriend = "Ted"; // Changes the value of phil.bestFriend
 ```
 
-In Ruby, by default, all instance variables are private - they can only be accessed or modified _within the object_ - while methods are all public. In order to retrieve manipulate the properties of a Ruby object from the outside, we therefore need to create methods that can either retreive ('getter') or change ('setter') the value of a property.
+In Ruby, by default, all instance variables are private - they can only be accessed or modified _within the object_ - while methods are all public. In order to retrieve manipulate the properties of a Ruby object from the outside, we therefore need to create methods that can either retrieve ('getter') or change ('setter') the value of a property.
 
 ```ruby
 class Country
@@ -153,11 +153,11 @@ However, creating two methods (a 'setter' and a 'getter') for every property of 
 
 ```ruby
 class Country
+  attr_accessor :language
+
   def initialize(name)
     @name = name
   end
-
-  attr_accessor :language
 end
 
 england = Country.new("England")
@@ -165,16 +165,16 @@ england.language = "english"
 puts england.language
 ```
 
-The Ruby keyword `attr_accessor` will _create our setters and getters for us_. We didn't even need to specify that `language` was a property of a Country object - Ruby will automatically add `language` as a property if it doesn't exist already. We can also create read-only properties using the `attr_reader` keyword, like so:
+The Ruby method `attr_accessor` will _create our setters and getters for us_. We didn't even need to specify that `language` was a property of a Country object - Ruby will automatically add `language` as a property if it doesn't exist already. We can also create read-only properties using the `attr_reader` keyword, like so:
 
 ```ruby
 class Country
+  attr_accessor :language
+  attr_reader :name
+
   def initialize(name)
     @name = name
   end
-
-  attr_accessor :language
-  attr_reader :name
 end
 
 england = Country.new("England")
@@ -200,16 +200,11 @@ Create another file in the `lib` directory called `shape.rb`. Inside it, create 
 
 It should also have a method called `calculate_area`, which calculates the area of a 'regular' shape (all sides equal) for the given side length. The [mathematical formula](http://www.mathopenref.com/polygonregulararea.html) for this is
 
-`A = n * s * s / (4 * tangent(PI/n))`
+```
+A = n * s * s / (4 * tangent(PI/n))
+```
 
 where n is the number of sides, and s is the length of the side.
 
 #####HINT:
 Ruby has a [module for performing mathematics](http://ruby-doc.org/core-2.2.0/Math.html) called `Math`; it has a lot of useful methods and properties that can help you out here. The `Math` module is one of Ruby's default modules, so Ruby already knows how to find it; to add it to your Shape object, and gain access to those methods and properties, use the `include` keyword.
-
-
-
-
-
-
-
