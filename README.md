@@ -13,29 +13,28 @@
 
 ## Introduction
 
-Yesterday, you learned about hashes in Ruby. In JavaScript, there's no distinction between Objects and key-value pairs (a.k.a. hashes, a.k.a. associative arrays), and in fact, JavaScript objects look and behave similarly to Ruby hashes. However, objects in Ruby behave differently from objects in JS.
+In JavaScript (JS), there's no distinction between Objects and key-value pairs (a.k.a. hashes, a.k.a. associative arrays), and in fact, JS objects look and behave similarly to Ruby hashes. However, objects in Ruby behave differently from objects in JS.
 
 ## Objectives
 
 By the end of this lesson, students should be able to:
 
-- Explain some of the differences between hashes and objects within Ruby:
+- Give one example of each of the following differences between JS hashes and objects within Ruby:
     - Instantiating new objects.
     - Creating new properties.
     - Accessing properties.
 - Define a class for an arbitrary object and instantiate it.
 
 
-## What is an Object?
+## Introduction
 
 Why does the word 'object' refer to two kinds of different things, depending on whether we're talking about Ruby or JavaScript? The answer is that 'object' is actually a much more generic term. In pure computer science, an object is simply a location in memory that holds a particular value. In the case of object-oriented programming languages, like JavaScript and Ruby, 'object' means a self-contained collection of properties and methods.
 
 At the end of the day, the idea of an object is just a conceit. The physical world is composed of objects (e.g. cars, buildings, people) which each have their own attributes and behaviors, so having the ability to model things in this way is very useful for solving problems.
 
-## JS Objects vs Ruby Object
 As far as objects go, probably the biggest difference between Ruby and JavaScript is that Ruby is a 'classical' language; this means that Ruby uses things called Classes to define and instantiate objects (as compared to JavaScript,)
 
-### Definition and Instantiation
+## Definition and Instantiation
 
 In JavaScript, a totally vanilla object can be created by simply typing `{}`, also known as an object literal, or by using `new` plus a constructor function, as follows:
 
@@ -92,14 +91,14 @@ class Dog
 end
 ```
 
-#### Pair Up!
+### Lab: Create an Instance of a Pre-defined Class
 Fork and clone this repo. Inside the folder `lib`, you'll find a file called `person.rb`. Inside this file, create a class for a Person object that has the following properties: name, age, and dare of birth.
 
 Then, in the root directory of this repo, open up a ruby interpreter using the command `pry`. In the first line, run the command `require_relative 'lib/person.rb'`; this will load the contents of the entire `person.rb` file, as if we had entered them manually into the console.
 
 Finally, instantiate a person object using `.new` and store it inside a variable. What do you see in the console?
 
-### Mutability
+## Mutability
 
 In JavaScript, once we'd created an object, we could dynamically add properties and methods to it simply by calling their names, like so:
 
@@ -111,7 +110,7 @@ x.favoriteFood = "blueberries";
 
 In Ruby, it's possible to add new properties or methods to an existing object, but it's not very common. Generally, all the properties and methods that an object will have will be laid out in the class.
 
-### Access
+## Access
 
 In JavaScript, all properties and methods on an object are (by default) both publicly readable and writeable. This means that we can do things like this:
 
@@ -187,21 +186,21 @@ puts england.name         # prints out "England"
 england.name = "France"   # NoMethodError: undefined method `name=' for #<Country:0x__________________ @name="England">
 ```
 
-#### Pair Up!
+### Lab: Create an Animal Class with Accessors (Data Only)
 Inside the `lib` directory, create a new file called `animal.rb`. Inside it, create a class called Animal (which, naturally, will create Animal objects). Each Animal object should have the following properties:
+
 * `name`
 * `age`
 * `favorite_food`
 
 Set `name` and `age` in the constructor. Make `name` 'read-only', and make `age` totally private. Make `favorite_food` both readable and writeable.
 
-
-#### On Your Own!
+## Lab: Create a Shape Class (Data and Behavior)
 Create another file in the `lib` directory called `shape.rb`. Inside it, create a Shape class, with the following properties:
-* name (set in constructor, private)
-* num_sides (set in constructor, readable)
-* color (NOT set in constructor, readable and writeable)
-* side_length (set in constructor, but both readable and writeable)
+* `name` (set in constructor, private)
+* `num_sides` (set in constructor, readable)
+* `color` (NOT set in constructor, readable and writeable)
+* `side_length` (set in constructor, but both readable and writeable)
 
 It should also have a method called `calculate_area`, which calculates the area of a 'regular' shape (all sides equal) for the given side length. The [mathematical formula](http://www.mathopenref.com/polygonregulararea.html) for this is
 
@@ -209,10 +208,9 @@ It should also have a method called `calculate_area`, which calculates the area 
 A = n * s * s / (4 * tangent(PI/n))
 ```
 
-where n is the number of sides, and s is the length of the side.
+where `n` is the number of sides, and `s` is the length of the side.
 
-#####HINT:
-Ruby has a [module for performing mathematics](http://ruby-doc.org/core-2.2.0/Math.html) called `Math`; it has a lot of useful methods and properties that can help you out here. The `Math` module is one of Ruby's default modules, so Ruby already knows how to find it; to add it to your Shape object, and gain access to those methods and properties, use the `include` keyword.
+**HINT:** Ruby has a [module for performing mathematics](http://ruby-doc.org/core-2.2.0/Math.html) called `Math`; it has a lot of useful methods and properties that can help you out here. The `Math` module is one of Ruby's default modules, so Ruby already knows how to find it; to add it to your Shape object, and gain access to those methods and properties, use the `include` keyword.
 
 ---
 
