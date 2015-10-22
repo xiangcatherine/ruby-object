@@ -4,7 +4,12 @@
 
 ## Prerequisites
 
-- Programming Fundamentals in Ruby (versus JavaSript)
+- [ga-wdi-boston/js-objects-intro](https://github.com/ga-wdi-boston/js-objects-intro)
+- [ga-wdi-boston/js-objects-intro-constructors](https://github.com/ga-wdi-boston/js-objects-intro-constructors)
+- [ga-wdi-boston/ruby-basics](https://github.com/ga-wdi-boston/ruby-basics)
+- [ga-wdi-boston/ruby-arrays](https://github.com/ga-wdi-boston/ruby-arrays)
+- [ga-wdi-boston/ruby-hashes](https://github.com/ga-wdi-boston/ruby-hashes)
+- [ga-wdi-boston/ruby-methods](https://github.com/ga-wdi-boston/ruby-methods)
 
 ## Introduction
 
