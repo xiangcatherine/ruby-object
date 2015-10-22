@@ -24,6 +24,7 @@ By the end of this lesson, students should be able to:
     - Creating new properties.
     - Accessing properties.
 - Define a class for an arbitrary object and instantiate it.
+- Define and call instance methods.
 
 
 ## Introduction
