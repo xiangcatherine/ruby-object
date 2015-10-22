@@ -208,3 +208,11 @@ where n is the number of sides, and s is the length of the side.
 
 #####HINT:
 Ruby has a [module for performing mathematics](http://ruby-doc.org/core-2.2.0/Math.html) called `Math`; it has a lot of useful methods and properties that can help you out here. The `Math` module is one of Ruby's default modules, so Ruby already knows how to find it; to add it to your Shape object, and gain access to those methods and properties, use the `include` keyword.
+
+---
+
+[License](LICENSE)
+------------------
+
+Source code distributed under the MIT license. Text and other assets copyright
+General Assembly, Inc., all rights reserved.
