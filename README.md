@@ -21,7 +21,7 @@ from objects in JS.
 
 ## Objectives
 
-By the end of this lesson, students should be able to:
+By the end of this, students should be able to:
 
 -   Give one example of each of the following differences between JS hashes and
     objects within Ruby:
