@@ -215,8 +215,7 @@ where `n` is the number of sides, and `s` is the length of the side.
 
 ---
 
-[License](LICENSE)
-------------------
+## [License](LICENSE)
 
 Source code distributed under the MIT license. Text and other assets copyright
 General Assembly, Inc., all rights reserved.
