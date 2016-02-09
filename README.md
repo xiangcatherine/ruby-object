@@ -30,6 +30,11 @@ By the end of this lesson, students should be able to:
 - Define a class for an arbitrary object and instantiate it.
 - Define and call instance methods.
 
+## Preparation
+
+1.  [Fork and clone](https://github.com/ga-wdi-boston/meta/wiki/ForkAndClone)
+    this repository.
+1.  Install dependencies with `bundle install`.
 
 ## Introduction
 
