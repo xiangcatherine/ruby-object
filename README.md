@@ -2,6 +2,11 @@
 
 # Ruby Objects vs JavaScript Objects
 
+In JavaScript (JS), there's no distinction between Objects and key-value pairs
+(a.k.a. hashes, a.k.a. associative arrays), and in fact, JS objects look and
+behave similarly to Ruby hashes. However, objects in Ruby behave differently
+from objects in JS.
+
 ## Prerequisites
 
 -   The JavaScript Objects Series:
@@ -13,10 +18,6 @@
     -   [ga-wdi-boston/js-objects-prototypes](https://github.com/ga-wdi-boston/js-objects-prototypes)
 
 -   [ga-wdi-boston/ruby-vs-js](https://github.com/ga-wdi-boston/ruby-vs-js)
-
-## Introduction
-
-In JavaScript (JS), there's no distinction between Objects and key-value pairs (a.k.a. hashes, a.k.a. associative arrays), and in fact, JS objects look and behave similarly to Ruby hashes. However, objects in Ruby behave differently from objects in JS.
 
 ## Objectives
 
