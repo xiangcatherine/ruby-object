@@ -23,15 +23,11 @@ from objects in JS.
 
 By the end of this, students should be able to:
 
--   Give one example of each of the following differences between JS hashes and
-    objects within Ruby:
-
-    -   Instantiating new objects.
-    -   Creating new properties.
-    -   Accessing properties.
-
--   Define a class for an arbitrary object and instantiate it.
--   Define and call instance methods.
+-   Contrast JS objects and Ruby objects.
+-   Define a class for an object in Ruby that assigns attributes in the
+    `initialize` constructor.
+-   Create an instance of an object in Ruby using `.new`.
+-   Write setter and getter instance methods for Ruby objects.
 
 ## Preparation
 
