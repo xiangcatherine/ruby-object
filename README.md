@@ -4,12 +4,15 @@
 
 ## Prerequisites
 
-- [ga-wdi-boston/js-objects-intro](https://github.com/ga-wdi-boston/js-objects-intro)
-- [ga-wdi-boston/js-objects-intro-constructors](https://github.com/ga-wdi-boston/js-objects-intro-constructors)
-- [ga-wdi-boston/ruby-basics](https://github.com/ga-wdi-boston/ruby-basics)
-- [ga-wdi-boston/ruby-arrays](https://github.com/ga-wdi-boston/ruby-arrays)
-- [ga-wdi-boston/ruby-hashes](https://github.com/ga-wdi-boston/ruby-hashes)
-- [ga-wdi-boston/ruby-methods](https://github.com/ga-wdi-boston/ruby-methods)
+-   The JavaScript Objects Series:
+
+    -   [ga-wdi-boston/js-reference-types](https://github.com/ga-wdi-boston/js-reference-types)
+    -   [ga-wdi-boston/js-objects](https://github.com/ga-wdi-boston/js-objects)
+    -   [ga-wdi-boston/js-objects-this](https://github.com/ga-wdi-boston/js-objects-this)
+    -   [ga-wdi-boston/js-objects-constructors](https://github.com/ga-wdi-boston/js-objects-constructors)
+    -   [ga-wdi-boston/js-objects-prototypes](https://github.com/ga-wdi-boston/js-objects-prototypes)
+
+-   [ga-wdi-boston/ruby-vs-js](https://github.com/ga-wdi-boston/ruby-vs-js)
 
 ## Introduction
 
