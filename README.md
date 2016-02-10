@@ -176,30 +176,32 @@ will be created when that object is instantiated.
 > However, this is very advanced Ruby usage,
 > and we won't be covering it right now.
 
-## Access
+## Accessing Properties and Methods
 
 In JavaScript, all properties and methods on an object are (by default) both
 publicly readable and writeable. This means that we can do things like this:
 
 ```javascript
-var phil = {
-  name: "Phil",
-  occupation: "researcher",
-  bestFriend: "Lem",
-  doScience: function() {
-    console.log("SCIENCE!!");
-  }
+const Country = function (name){
+  this.name: name,
+  this.language: null
 }
-console.log(phil.name);  // prints "Phil"
-phil.doScience();        // "SCIENCE!!"
-phil.bestFriend = "Ted"; // Changes the value of phil.bestFriend
+
+let brazil = new Country("Brazil");
+brazil.language = "portuguese";
+console.log(brazil.language);       // prints "portuguese"
 ```
 
-In Ruby, by default, all instance variables are private - they can only be
-accessed or modified _within the object_ - while methods are all public. In
-order to retrieve manipulate the properties of a Ruby object from the outside,
-we therefore need to create methods that can either retrieve ('getter') or
-change ('setter') the value of a property.
+In Ruby, **all instance variables are private** -
+they can only be accessed or modified _within the object_ -
+and all methods are public by default (though they can also be made private).
+
+How then can we access the properties of a Ruby object from the outside?
+Methods defined _within_ the object have access to those properties,
+and since those methods can be (and usually are) public,
+we can create methods specifically for accessing properties.
+These methods are typically called 'getter' and 'setter' methods,
+based on whether they're use to retrieve ('get') or change ('set') properties.
 
 ```ruby
 class Country
@@ -208,24 +210,39 @@ class Country
     @language
   end
 
-  def get_language
+  def language         # 'getter' for @language
     @language
   end
 
-  def set_language(lang)
+  def language=(lang)  # 'setter' for @language
     @language = lang
   end
 end
 
 england = Country.new("England")
-england.set_language("english")
-puts england.get_language
+england.language=("english")    # invoking the 'setter'
+puts england.language()         # invoking the 'getter'
+# => "english"
 ```
 
-Above, the value of the `@language` instance variable was not set when we
-created the new Country object. However, because we had a 'setter' method (in
-the form of `set_language`), we were able to set its value after the object was
-created.
+In the example above,
+the value of the `@language` instance variable was not set
+when we initialized a new `Country` object.
+However, because we had a 'setter' method,
+we were able to change the value of `@language` after the object was created.
+
+> Ruby convention is for 'getter' and 'setter' methods to be named,
+> respectively, `propertyName` and `propertyName=`
+
+Of course, parentheses are optional when you invoke a method in Ruby,
+and spaces are (usually) ignored,
+so those two invocations could be rewritten as
+
+```ruby
+england.language = "english"    # invoking the 'setter'
+puts england.language           # invoking the 'getter'
+```
+
 
 However, creating two methods (a 'setter' and a 'getter') for every property of
 an object is pretty tedious, especially since the methods are all essentially
