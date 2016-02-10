@@ -138,16 +138,16 @@ directly on the class we want to instantiate (in this case, `Rectangle`).
 > Because there is no such thing as an 'Object Literal' in Ruby,
 > all new objects _must_ be created using `.new`
 
-## Lab: Create an Instance of a Pre-defined Class
+### Lab
 
-Fork and clone this repo. Inside the folder `lib`, you'll find a file called
-`person.rb`. Inside this file, create a class for a Person object that has the
-following properties: name, age, and dare of birth.
+Inside this repo, in the folder `lib`, you'll find a file called `person.rb`.
+In that file define a Ruby class for creating Person objects;
+every Person object should have a name, an age, and a date of birth.
 
-Then, in the root directory of this repo, open up a ruby interpreter using the
-command `pry`. In the first line, run the command `require_relative
-'lib/person.rb'`; this will load the contents of the entire `person.rb` file, as
-if we had entered them manually into the console.
+Then, in the root of this repo, open up a Ruby interpreter with `pry`.
+In the first line, run the command `require_relative 'lib/person.rb'`;
+this will load the contents of the entire `person.rb` file into the terminal,
+as if we had manually entered them one by one into the console.
 
 Finally, instantiate a person object using `.new` and store it inside a
 variable. What do you see in the console?
