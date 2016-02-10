@@ -39,20 +39,20 @@ By the end of this, students should be able to:
 
 Why does the word 'object' refer to two kinds of different things, depending on
 whether we're talking about Ruby or JavaScript? The answer is that 'object' is
-actually a much more generic term. In pure computer science, an object is simply
-a location in memory that holds a particular value. In the case of
-object-oriented programming languages, like JavaScript and Ruby, 'object' means
+actually a much more generic term, referring to an abstraction that represents
+both data and behavior. In the case of
+object-oriented programming languages like JavaScript and Ruby, 'object' means
 a self-contained collection of properties and methods.
 
-At the end of the day, the idea of an object is just a conceit. The physical
-world is composed of objects (e.g. cars, buildings, people) which each have
+At the end of the day, an object is just a conceit for the programmer.
+The physical world is composed of objects (e.g. cars, buildings) which each have
 their own attributes and behaviors, so having the ability to model things in
 this way is very useful for solving problems.
 
-As far as objects go, probably the biggest difference between Ruby and
-JavaScript is that Ruby is a 'classical' language; this means that Ruby uses
-things called Classes to define and instantiate objects (as compared to
-JavaScript,)
+Probably the biggest difference between how Ruby and Javascript deal with
+objects is that Ruby is a 'classical' language; this means that Ruby uses
+special objects called _classes_ to define and instantiate new objects.
+More on classes in a minute.
 
 ## Definition and Instantiation
 
