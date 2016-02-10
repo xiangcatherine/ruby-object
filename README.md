@@ -152,20 +152,29 @@ as if we had manually entered them one by one into the console.
 Finally, instantiate a person object using `.new` and store it inside a
 variable. What do you see in the console?
 
-## Mutability
+## Object Mutability
 
 In JavaScript, once we'd created an object, we could dynamically add properties
 and methods to it simply by calling their names, like so:
 
 ```javascript
-var x = {};
-x.name = "Matt";
-x.favoriteFood = "blueberries";
+var hs = {};
+hs.givenName = "Homer";
+hs.surname = "Simpson";
+hs.favoriteFood = "donuts";
 ```
 
-In Ruby, it's possible to add new properties or methods to an existing object,
-but it's not very common. Generally, all the properties and methods that an
-object will have will be laid out in the class.
+Although it's technically possible to add
+new properties or methods to an existing object,
+doing so is not very common.
+Generally, all the properties and methods that a new object gets
+will be created when that object is instantiated.
+
+> One exception to this is that
+> classes can sometimes be redefined, or 'reopened',
+> after they've been written.
+> However, this is very advanced Ruby usage,
+> and we won't be covering it right now.
 
 ## Access
 
