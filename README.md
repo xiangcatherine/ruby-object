@@ -142,7 +142,11 @@ directly on the class we want to instantiate (in this case, `Rectangle`).
 
 Inside this repo, in the folder `lib`, you'll find a file called `person.rb`.
 In that file define a Ruby class for creating Person objects;
-every Person object should have a name, an age, and a date of birth.
+every Person object should have
+
+-   a given name and surname
+-   a favorite food
+-   a catchphrase
 
 Then, in the root of this repo, open up a Ruby interpreter with `pry`.
 In the first line, run the command `require_relative 'lib/person.rb'`;
@@ -162,6 +166,7 @@ var hs = {};
 hs.givenName = "Homer";
 hs.surname = "Simpson";
 hs.favoriteFood = "donuts";
+hs.catchphrase = "Doh!";
 ```
 
 Although it's technically possible to add
