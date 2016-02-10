@@ -54,7 +54,9 @@ objects is that Ruby is a 'classical' language; this means that Ruby uses
 special objects called _classes_ to define and instantiate new objects.
 More on classes in a minute.
 
-## Definition and Instantiation
+## Object Definition and Instantiation
+
+Let's briefly recap what we know about objects in JavaScript.
 
 In JavaScript, a totally vanilla object can be created by simply typing `{}`,
 also known as an object literal, or by using `new` plus a constructor function,
@@ -64,62 +66,77 @@ as follows:
 var x = new Object();
 ```
 
-To create an object that has a given set of properties, just write a different
-constructor function.
+To create an object that has some particular set of properties,
+you can write your own constructor function.
+To add methods for those new objects to call,
+define them on that constructor's `prototype`.
 
 ```javascript
-var Dog = function(name, breed) {
-  this.name = name;
-  this.breed = breed;
+const Rectangle = function(length, width) {
+  this.length = length;
+  this.width = width;
 }
+Rectangle.prototype.area = function(){
+  return this.length * this.width;
+};
 
-var rover = new Dog("Rover","greyhound");
+let firstRect = new Rectangle(3,5);
+firstRect.area();
+// => 15
+let secondRect = new Rectangle(10,2);
+secondRect.area();
+// => 20
 ```
 
-In Ruby, there is no such thing as Object Literal syntax; instead objects
-**must** be created with a constructor, using the syntax below.
+In Ruby, the job of creating new objects falls on a special type of object
+called a _class_. A class can be thought of as a template or factory for
+creating new objects, **separate & distinct from the objects that it creates**,
+which are referred to as _instances_ of the class.
+
+Here's how we might translate the Rectangle example above into Ruby:
 
 ```ruby
-x = Object.new
-```
+class Rectangle
+  def initialize(length, width)
+    @length = length
+    @width = width
+  end
 
-Remember, in Ruby, it's not necessary to write parentheses to invoke a method
-(though it's common to do so if a method has arguments).
-
-How do we define an object so that it has a given set of properties? In Ruby,
-this is accomplished using a type of object called a _class_. A class can be
-thought of as a template or definition for the object, but separate and distinct
-from the object itself; the class contains a constructor function, which
-specifies the properties that the object will have.
-
-Here's how we might create the above 'Dog' object in Ruby:
-
-```ruby
-class Dog
-  def initialize(name, breed)
-    @name = name
-    @breed = breed
+  def area
+    @length * @width
   end
 end
+
+firstRect = Rectangle.new(3,5)
+firstRect.area
+# => 15
+secondRect = Rectangle.new(10,2)
+secondRect.area
+# => 20
 ```
 
-The `@` means that this property belongs individually to each specific instance
-of Person - in Ruby, this is called an _instance variable_.
+The `@` indicates that we're referring talking about an _instance variable_,
+a property for which each individual instance produced by the class has a
+unique copy.
+In other words,
+**every new Rectangle will have its own unique length and width values**.
 
-Methods for a given object also get specified inside the class.
+As you can see, it's possible to define methods inside class definitions.
+Generally speaking, these methods can be invoked on each instance of that class,
+and so are called _instance methods_. `.area`, above, is one example.
 
-```ruby
-class Dog
-  def initialize(name, breed)
-    @name = name
-    @breed = breed
-  end
+`initialize`, however, is a special case. `initialize` plays a similar role to
+constructor functions in JavaScript, defining specific values for
+each instance's properties.
+As you can see above, when we create a new object in JS,
+we don't simply invoke the constructor function --
+we need to use a special keyword, `new`, in order for it to work properly.
+Similarly, in Ruby, we don't invoke `initialize` directly,
+but instead invoke a special method, `.new`,
+directly on the class we want to instantiate (in this case, `Rectangle`).
 
-  def bark
-    puts "WOOF"
-  end
-end
-```
+> Because there is no such thing as an 'Object Literal' in Ruby,
+> all new objects _must_ be created using `.new`
 
 ## Lab: Create an Instance of a Pre-defined Class
 
