@@ -243,6 +243,16 @@ england.language = "english"    # invoking the 'setter'
 puts england.language           # invoking the 'getter'
 ```
 
+### Lab : Writing Getters and Setters
+
+Go back to the `person.rb` file inside the `lib` directory.
+For each of the instance properties you defined earlier,
+create two accessor methods, a 'getter' and a 'setter',
+so that those properties can be manipulated after the object is instantiated.
+
+To check that your code is working correctly,
+go to the root of the repo and run `rspec spec`;
+if all tests are passing, you've done it right!
 
 However, creating two methods (a 'setter' and a 'getter') for every property of
 an object is pretty tedious, especially since the methods are all essentially
@@ -283,19 +293,6 @@ england = Country.new("England")
 puts england.name         # prints out "England"
 england.name = "France"   # NoMethodError: undefined method `name=' for #<Country:0x__________________ @name="England">
 ```
-
-## Lab: Create an Animal Class with Accessors (Data Only)
-
-Inside the `lib` directory, create a new file called `animal.rb`. Inside it,
-create a class called Animal (which, naturally, will create Animal objects).
-Each Animal object should have the following properties:
-
--   `name`
--   `age`
--   `favorite_food`
-
-Set `name` and `age` in the constructor. Make `name` 'read-only', and make `age`
-totally private. Make `favorite_food` both readable and writeable.
 
 ## Lab: Create a Shape Class (Data and Behavior)
 
