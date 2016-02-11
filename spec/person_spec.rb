@@ -4,7 +4,6 @@ context "Person" do
 
   before(:context) do
     @p = Person.new('Ned', 'Flanders', 'Hot Cross Buns', 'Okilly-dokilly!')
-    # expect(@p).not_to raise_error
   end
 
   context "initialized in before(:context)" do

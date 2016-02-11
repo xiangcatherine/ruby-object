@@ -256,7 +256,7 @@ create two accessor methods, a 'getter' and a 'setter',
 so that those properties can be manipulated after the object is instantiated.
 
 To check that your code is working correctly,
-go to the root of the repo and run `rspec spec`;
+go to the root of the repo and run `rspec spec/person_spec.rb`;
 if all tests are passing, you've done it right!
 
 ### Helper Methods for Accessing Properties
