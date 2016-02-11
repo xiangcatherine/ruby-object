@@ -259,10 +259,17 @@ To check that your code is working correctly,
 go to the root of the repo and run `rspec spec`;
 if all tests are passing, you've done it right!
 
-However, creating two methods (a 'setter' and a 'getter') for every property of
-an object is pretty tedious, especially since the methods are all essentially
-the same for every variable. Fortunately, Ruby gives us two handy shortcuts to
-help keep our code DRY.
+### Helper Methods for Accessing Properties
+
+In this last exercise,
+you created two methods for each property specified in the Person class.
+This was necessary in order to have read and write access to those properties.
+But writing all those nearly-identical pairs of methods was pretty tedious, no?
+
+As you know by now, when programmers need to do repetitive tasks,
+they usually try to find a way to automate and simplify the work.
+And in fact, the developers of Ruby built in a couple of helper methods
+for just this purpose.
 
 ```ruby
 class Country
@@ -278,11 +285,19 @@ england.language = "english"
 puts england.language
 ```
 
-The Ruby method `attr_accessor` will _create our setters and getters for us_. We
-didn't even need to specify that `language` was a property of a Country object -
-Ruby will automatically add `language` as a property if it doesn't exist
-already. We can also create read-only properties using the `attr_reader`
-keyword, like so:
+The Ruby method `attr_accessor` takes a symbol as an input and
+creates 'getter' and 'setter' methods with that symbols as their name.
+The code above is _functionally identical_ to the previous code block.
+
+There are three `attr_` methods available for Ruby objects to use.
+
+| Method Name     | Methods Created       | Other Notes                      |
+|:---------------:|:---------------------:|:--------------------------------:|
+| `attr_accessor` | 'getter' and 'setter' | The most commonly used.          |
+| `attr_reader`   | 'getter' only         | Creating "read-only" properties. |
+| `attr_writer`   | 'setter' only         | Rarely used. Uncommon use case.  |
+
+If we wanted `@name` to be read-only, we might use `attr_reader` like so:
 
 ```ruby
 class Country
@@ -298,6 +313,13 @@ england = Country.new("England")
 puts england.name         # prints out "England"
 england.name = "France"   # NoMethodError: undefined method `name=' for #<Country:0x__________________ @name="England">
 ```
+
+By the way, did you notice that we didn't specify `language`
+as an instance variable anywhere inside the Country class?
+An added feature of all of the `attr_` methods is
+that if the symbol passed in doesn't refer to an existing instance variable,
+they will automatically create an instance variable
+(with a name derived from the symbol) for it to refer to.
 
 ## Lab: Create a Shape Class (Data and Behavior)
 
