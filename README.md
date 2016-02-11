@@ -39,22 +39,24 @@ By the end of this, students should be able to:
 
 Why does the word 'object' refer to two kinds of different things, depending on
 whether we're talking about Ruby or JavaScript? The answer is that 'object' is
-actually a much more generic term. In pure computer science, an object is simply
-a location in memory that holds a particular value. In the case of
-object-oriented programming languages, like JavaScript and Ruby, 'object' means
+actually a much more generic term, referring to an abstraction that represents
+both data and behavior. In the case of
+object-oriented programming languages like JavaScript and Ruby, 'object' means
 a self-contained collection of properties and methods.
 
-At the end of the day, the idea of an object is just a conceit. The physical
-world is composed of objects (e.g. cars, buildings, people) which each have
+At the end of the day, an object is just a conceit for the programmer.
+The physical world is composed of objects (e.g. cars, buildings) which each have
 their own attributes and behaviors, so having the ability to model things in
 this way is very useful for solving problems.
 
-As far as objects go, probably the biggest difference between Ruby and
-JavaScript is that Ruby is a 'classical' language; this means that Ruby uses
-things called Classes to define and instantiate objects (as compared to
-JavaScript,)
+Probably the biggest difference between how Ruby and Javascript deal with
+objects is that Ruby is a 'classical' language; this means that Ruby uses
+special objects called _classes_ to define and instantiate new objects.
+More on classes in a minute.
 
-## Definition and Instantiation
+## Object Definition and Instantiation
+
+Let's briefly recap what we know about objects in JavaScript.
 
 In JavaScript, a totally vanilla object can be created by simply typing `{}`,
 also known as an object literal, or by using `new` plus a constructor function,
@@ -64,116 +66,147 @@ as follows:
 var x = new Object();
 ```
 
-To create an object that has a given set of properties, just write a different
-constructor function.
+To create an object that has some particular set of properties,
+you can write your own constructor function.
+To add methods for those new objects to call,
+define them on that constructor's `prototype`.
 
 ```javascript
-var Dog = function(name, breed) {
-  this.name = name;
-  this.breed = breed;
+const Rectangle = function(length, width) {
+  this.length = length;
+  this.width = width;
 }
+Rectangle.prototype.area = function(){
+  return this.length * this.width;
+};
 
-var rover = new Dog("Rover","greyhound");
+let firstRect = new Rectangle(3,5);
+firstRect.area();
+// => 15
+let secondRect = new Rectangle(10,2);
+secondRect.area();
+// => 20
 ```
 
-In Ruby, there is no such thing as Object Literal syntax; instead objects
-**must** be created with a constructor, using the syntax below.
+In Ruby, the job of creating new objects falls on a special type of object
+called a _class_. A class can be thought of as a template or factory for
+creating new objects, **separate & distinct from the objects that it creates**,
+which are referred to as _instances_ of the class.
+
+Here's how we might translate the Rectangle example above into Ruby:
 
 ```ruby
-x = Object.new
-```
+class Rectangle
+  def initialize(length, width)
+    @length = length
+    @width = width
+  end
 
-Remember, in Ruby, it's not necessary to write parentheses to invoke a method
-(though it's common to do so if a method has arguments).
-
-How do we define an object so that it has a given set of properties? In Ruby,
-this is accomplished using a type of object called a _class_. A class can be
-thought of as a template or definition for the object, but separate and distinct
-from the object itself; the class contains a constructor function, which
-specifies the properties that the object will have.
-
-Here's how we might create the above 'Dog' object in Ruby:
-
-```ruby
-class Dog
-  def initialize(name, breed)
-    @name = name
-    @breed = breed
+  def area
+    @length * @width
   end
 end
+
+firstRect = Rectangle.new(3,5)
+firstRect.area
+# => 15
+secondRect = Rectangle.new(10,2)
+secondRect.area
+# => 20
 ```
 
-The `@` means that this property belongs individually to each specific instance
-of Person - in Ruby, this is called an _instance variable_.
+The `@` indicates that we're referring talking about an _instance variable_,
+a property for which each individual instance produced by the class has a
+unique copy.
+In other words,
+**every new Rectangle will have its own unique length and width values**.
 
-Methods for a given object also get specified inside the class.
+As you can see, it's possible to define methods inside class definitions.
+Generally speaking, these methods can be invoked on each instance of that class,
+and so are called _instance methods_. `.area`, above, is one example.
 
-```ruby
-class Dog
-  def initialize(name, breed)
-    @name = name
-    @breed = breed
-  end
+`initialize`, however, is a special case. `initialize` plays a similar role to
+constructor functions in JavaScript, defining specific values for
+each instance's properties.
+As you can see above, when we create a new object in JS,
+we don't simply invoke the constructor function --
+we need to use a special keyword, `new`, in order for it to work properly.
+Similarly, in Ruby, we don't invoke `initialize` directly,
+but instead invoke a special method, `.new`,
+directly on the class we want to instantiate (in this case, `Rectangle`).
 
-  def bark
-    puts "WOOF"
-  end
-end
-```
+> Because there is no such thing as an 'Object Literal' in Ruby,
+> all new objects _must_ be created using `.new`
 
-## Lab: Create an Instance of a Pre-defined Class
+### Lab
 
-Fork and clone this repo. Inside the folder `lib`, you'll find a file called
-`person.rb`. Inside this file, create a class for a Person object that has the
-following properties: name, age, and dare of birth.
+Inside this repo, in the folder `lib`, you'll find a file called `person.rb`.
+In that file define a Ruby class for creating Person objects;
+every Person object should have
 
-Then, in the root directory of this repo, open up a ruby interpreter using the
-command `pry`. In the first line, run the command `require_relative
-'lib/person.rb'`; this will load the contents of the entire `person.rb` file, as
-if we had entered them manually into the console.
+-   a given name and surname
+-   a favorite food
+-   a catchphrase
+
+Then, in the root of this repo, open up a Ruby interpreter with `pry`.
+In the first line, run the command `require_relative 'lib/person.rb'`;
+this will load the contents of the entire `person.rb` file into the terminal,
+as if we had manually entered them one by one into the console.
 
 Finally, instantiate a person object using `.new` and store it inside a
 variable. What do you see in the console?
 
-## Mutability
+## Object Mutability
 
 In JavaScript, once we'd created an object, we could dynamically add properties
 and methods to it simply by calling their names, like so:
 
 ```javascript
-var x = {};
-x.name = "Matt";
-x.favoriteFood = "blueberries";
+var hs = {};
+hs.givenName = "Homer";
+hs.surname = "Simpson";
+hs.favoriteFood = "donuts";
+hs.catchphrase = "Doh!";
 ```
 
-In Ruby, it's possible to add new properties or methods to an existing object,
-but it's not very common. Generally, all the properties and methods that an
-object will have will be laid out in the class.
+Although it's technically possible to add
+new properties or methods to an existing object,
+doing so is not very common.
+Generally, all the properties and methods that a new object gets
+will be created when that object is instantiated.
 
-## Access
+> One exception to this is that
+> classes can sometimes be redefined, or 'reopened',
+> after they've been written.
+> However, this is very advanced Ruby usage,
+> and we won't be covering it right now.
+
+## Accessing Properties and Methods
 
 In JavaScript, all properties and methods on an object are (by default) both
 publicly readable and writeable. This means that we can do things like this:
 
 ```javascript
-var phil = {
-  name: "Phil",
-  occupation: "researcher",
-  bestFriend: "Lem",
-  doScience: function() {
-    console.log("SCIENCE!!");
-  }
+const Country = function (name){
+  this.name: name,
+  this.language: null
 }
-console.log(phil.name);  // prints "Phil"
-phil.doScience();        // "SCIENCE!!"
-phil.bestFriend = "Ted"; // Changes the value of phil.bestFriend
+
+let brazil = new Country("Brazil");
+brazil.language = "portuguese";
+console.log(brazil.language);       // prints "portuguese"
 ```
 
-In Ruby, by default, all instance variables are private - they can only be
-accessed or modified _within the object_ - while methods are all public. In
-order to retrieve manipulate the properties of a Ruby object from the outside,
-we therefore need to create methods that can either retrieve ('getter') or
-change ('setter') the value of a property.
+In Ruby, **all instance variables are private** -
+they can only be accessed or modified _within the object_ -
+and all methods are public by default (though they can also be made private).
+
+How then can we access the properties of a Ruby object from the outside?
+Methods defined _within_ the object have access to those properties,
+and since those methods can be (and usually are) public,
+we can create methods specifically for accessing properties.
+These methods are typically called 'getter' and 'setter' methods,
+based on whether they're use to retrieve ('get') or change ('set') properties.
 
 ```ruby
 class Country
@@ -182,29 +215,61 @@ class Country
     @language
   end
 
-  def get_language
+  def language         # 'getter' for @language
     @language
   end
 
-  def set_language(lang)
+  def language=(lang)  # 'setter' for @language
     @language = lang
   end
 end
 
 england = Country.new("England")
-england.set_language("english")
-puts england.get_language
+england.language=("english")    # invoking the 'setter'
+puts england.language()         # invoking the 'getter'
+# => "english"
 ```
 
-Above, the value of the `@language` instance variable was not set when we
-created the new Country object. However, because we had a 'setter' method (in
-the form of `set_language`), we were able to set its value after the object was
-created.
+In the example above,
+the value of the `@language` instance variable was not set
+when we initialized a new `Country` object.
+However, because we had a 'setter' method,
+we were able to change the value of `@language` after the object was created.
 
-However, creating two methods (a 'setter' and a 'getter') for every property of
-an object is pretty tedious, especially since the methods are all essentially
-the same for every variable. Fortunately, Ruby gives us two handy shortcuts to
-help keep our code DRY.
+> Ruby convention is for 'getter' and 'setter' methods to be named,
+> respectively, `propertyName` and `propertyName=`
+
+Of course, parentheses are optional when you invoke a method in Ruby,
+and spaces are (usually) ignored,
+so those two invocations could be rewritten as
+
+```ruby
+england.language = "english"    # invoking the 'setter'
+puts england.language           # invoking the 'getter'
+```
+
+### Lab : Writing Getters and Setters
+
+Go back to the `person.rb` file inside the `lib` directory.
+For each of the instance properties you defined earlier,
+create two accessor methods, a 'getter' and a 'setter',
+so that those properties can be manipulated after the object is instantiated.
+
+To check that your code is working correctly,
+go to the root of the repo and run `rspec spec/person_spec.rb`;
+if all tests are passing, you've done it right!
+
+### Helper Methods for Accessing Properties
+
+In this last exercise,
+you created two methods for each property specified in the Person class.
+This was necessary in order to have read and write access to those properties.
+But writing all those nearly-identical pairs of methods was pretty tedious, no?
+
+As you know by now, when programmers need to do repetitive tasks,
+they usually try to find a way to automate and simplify the work.
+And in fact, the developers of Ruby built in a couple of helper methods
+for just this purpose.
 
 ```ruby
 class Country
@@ -220,11 +285,19 @@ england.language = "english"
 puts england.language
 ```
 
-The Ruby method `attr_accessor` will _create our setters and getters for us_. We
-didn't even need to specify that `language` was a property of a Country object -
-Ruby will automatically add `language` as a property if it doesn't exist
-already. We can also create read-only properties using the `attr_reader`
-keyword, like so:
+The Ruby method `attr_accessor` takes a symbol as an input and
+creates 'getter' and 'setter' methods with that symbols as their name.
+The code above is _functionally identical_ to the previous code block.
+
+There are three `attr_` methods available for Ruby objects to use.
+
+| Method Name     | Methods Created       | Other Notes                      |
+|:---------------:|:---------------------:|:--------------------------------:|
+| `attr_accessor` | 'getter' and 'setter' | The most commonly used.          |
+| `attr_reader`   | 'getter' only         | Creating "read-only" properties. |
+| `attr_writer`   | 'setter' only         | Rarely used. Uncommon use case.  |
+
+If we wanted `@name` to be read-only, we might use `attr_reader` like so:
 
 ```ruby
 class Country
@@ -241,39 +314,39 @@ puts england.name         # prints out "England"
 england.name = "France"   # NoMethodError: undefined method `name=' for #<Country:0x__________________ @name="England">
 ```
 
-## Lab: Create an Animal Class with Accessors (Data Only)
+By the way, did you notice that we didn't specify `language`
+as an instance variable anywhere inside the Country class?
+An added feature of all of the `attr_` methods is
+that if the symbol passed in doesn't refer to an existing instance variable,
+they will automatically create an instance variable
+(with a name derived from the symbol) for it to refer to.
 
-Inside the `lib` directory, create a new file called `animal.rb`. Inside it,
-create a class called Animal (which, naturally, will create Animal objects).
-Each Animal object should have the following properties:
+#### Lab: Creating a 'Shape' Class
 
--   `name`
--   `age`
--   `favorite_food`
+Create a new file in the `lib` directory and call it `shape.rb`.
+Inside that file, define a Shape class with the following instance variables:
 
-Set `name` and `age` in the constructor. Make `name` 'read-only', and make `age`
-totally private. Make `favorite_food` both readable and writeable.
+-   `num_sides` : set during instantiation, read-only
+-   `side_length` : set during instantiation, readable and writeable
+-   `color` : NOT set during instantiation, readable and writeable
 
-## Lab: Create a Shape Class (Data and Behavior)
+The initalize method should have the following signature:
+`Shape.new(num_sides, side_length)`
 
-Create another file in the `lib` directory called `shape.rb`. Inside it, create
-a Shape class, with the following properties:
-
--   `name` (set in constructor, private)
--   `num_sides` (set in constructor, readable)
--   `color` (NOT set in constructor, readable and writeable)
--   `side_length` (set in constructor, but both readable and writeable)
-
-It should also have a method called `calculate_area`, which calculates the area
-of a 'regular' shape (all sides equal) for the given side length. The
-[mathematical formula](http://www.mathopenref.com/polygonregulararea.html) for
-this is
+The class should also have an instance method called `calculate_area`,
+which calculates the area of a 'regular' shape (all sides equal)
+for the given side length.
+The [mathematical formula](http://www.mathopenref.com/polygonregulararea.html)
+for this is
 
 ```md
 A = n * s * s / (4 * tangent(PI/n))
 ```
 
 where `n` is the number of sides, and `s` is the length of the side.
+
+To test whether or not your code is working,
+run the command `respec spec/shape_spec.rb`
 
 **HINT:** Ruby has a [module for performing
 mathematics](http://ruby-doc.org/core-2.2.0/Math.html) called `Math`; it has a
