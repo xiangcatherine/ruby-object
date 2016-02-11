@@ -321,26 +321,32 @@ that if the symbol passed in doesn't refer to an existing instance variable,
 they will automatically create an instance variable
 (with a name derived from the symbol) for it to refer to.
 
-## Lab: Create a Shape Class (Data and Behavior)
+#### Lab: Creating a 'Shape' Class
 
-Create another file in the `lib` directory called `shape.rb`. Inside it, create
-a Shape class, with the following properties:
+Create a new file in the `lib` directory and call it `shape.rb`.
+Inside that file, define a Shape class with the following instance variables:
 
--   `name` (set in constructor, private)
--   `num_sides` (set in constructor, readable)
--   `color` (NOT set in constructor, readable and writeable)
--   `side_length` (set in constructor, but both readable and writeable)
+-   `num_sides` : set during instantiation, read-only
+-   `side_length` : set during instantiation, readable and writeable
+-   `color` : NOT set during instantiation, readable and writeable
 
-It should also have a method called `calculate_area`, which calculates the area
-of a 'regular' shape (all sides equal) for the given side length. The
-[mathematical formula](http://www.mathopenref.com/polygonregulararea.html) for
-this is
+The initalize method should have the following signature:
+`Shape.new(num_sides, side_length)`
+
+The class should also have an instance method called `calculate_area`,
+which calculates the area of a 'regular' shape (all sides equal)
+for the given side length.
+The [mathematical formula](http://www.mathopenref.com/polygonregulararea.html)
+for this is
 
 ```md
 A = n * s * s / (4 * tangent(PI/n))
 ```
 
 where `n` is the number of sides, and `s` is the length of the side.
+
+To test whether or not your code is working,
+run the command `respec spec/shape_spec.rb`
 
 **HINT:** Ruby has a [module for performing
 mathematics](http://ruby-doc.org/core-2.2.0/Math.html) called `Math`; it has a
