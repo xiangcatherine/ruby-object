@@ -346,7 +346,7 @@ A = n * s * s / (4 * tangent(PI/n))
 where `n` is the number of sides, and `s` is the length of the side.
 
 To test whether or not your code is working,
-run the command `respec spec/shape_spec.rb`
+run the command `rspec spec/shape_spec.rb`
 
 **HINT:** Ruby has a [module for performing
 mathematics](http://ruby-doc.org/core-2.2.0/Math.html) called `Math`; it has a
