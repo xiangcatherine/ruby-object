@@ -75,7 +75,8 @@ define them on that constructor's `prototype`.
 const Rectangle = function(length, width) {
   this.length = length;
   this.width = width;
-}
+};
+
 Rectangle.prototype.area = function(){
   return this.length * this.width;
 };
