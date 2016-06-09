@@ -63,7 +63,7 @@ also known as an object literal, or by using `new` plus a constructor function,
 as follows:
 
 ```javascript
-var x = new Object();
+let x = new Object();
 ```
 
 To create an object that has some particular set of properties,
@@ -75,7 +75,8 @@ define them on that constructor's `prototype`.
 const Rectangle = function(length, width) {
   this.length = length;
   this.width = width;
-}
+};
+
 Rectangle.prototype.area = function(){
   return this.length * this.width;
 };
@@ -162,7 +163,7 @@ In JavaScript, once we'd created an object, we could dynamically add properties
 and methods to it simply by calling their names, like so:
 
 ```javascript
-var hs = {};
+let hs = {};
 hs.givenName = "Homer";
 hs.surname = "Simpson";
 hs.favoriteFood = "donuts";
@@ -346,7 +347,7 @@ A = n * s * s / (4 * tangent(PI/n))
 where `n` is the number of sides, and `s` is the length of the side.
 
 To test whether or not your code is working,
-run the command `respec spec/shape_spec.rb`
+run the command `rspec spec/shape_spec.rb`
 
 **HINT:** Ruby has a [module for performing
 mathematics](http://ruby-doc.org/core-2.2.0/Math.html) called `Math`; it has a
