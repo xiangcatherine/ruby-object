@@ -189,8 +189,8 @@ publicly readable and writeable. This means that we can do things like this:
 
 ```javascript
 const Country = function (name){
-  this.name: name,
-  this.language: null
+  this.name = name,
+  this.language = null
 }
 
 let brazil = new Country("Brazil");
