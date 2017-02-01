@@ -33,6 +33,7 @@ By the end of this, students should be able to:
 1.  [Fork and clone](https://github.com/ga-wdi-boston/meta/wiki/ForkAndClone)
     this repository.
 1.  Install dependencies with `bundle install`.
+1.  Checkout to a new branch `training`.
 
 ## Introduction
 
