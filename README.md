@@ -211,27 +211,7 @@ we can create methods specifically for accessing properties.
 These methods are typically called 'getter' and 'setter' methods,
 based on whether they're use to retrieve ('get') or change ('set') properties.
 
-```ruby
-class Country
-  def initialize(name)
-    @name = name
-    @language
-  end
-
-  def language         # 'getter' for @language
-    @language
-  end
-
-  def language=(lang)  # 'setter' for @language
-    @language = lang
-  end
-end
-
-england = Country.new("England")
-england.language=("english")    # invoking the 'setter'
-puts england.language()         # invoking the 'getter'
-# => "english"
-```
+Take a look at the code in [`lib/country.rb`](lib/country.rb)
 
 In the example above,
 the value of the `@language` instance variable was not set
@@ -262,7 +242,7 @@ To check that your code is working correctly,
 go to the root of the repo and run `rspec spec/person_spec.rb`;
 if all tests are passing, you've done it right!
 
-### Helper Methods for Accessing Properties
+### Code-Along: Helper Methods for Accessing Properties
 
 In this last exercise,
 you created two methods for each property specified in the Person class.
@@ -274,19 +254,9 @@ they usually try to find a way to automate and simplify the work.
 And in fact, the developers of Ruby built in a couple of helper methods
 for just this purpose.
 
-```ruby
-class Country
-  attr_accessor :language
-
-  def initialize(name)
-    @name = name
-  end
-end
-
-england = Country.new("England")
-england.language = "english"
-puts england.language
-```
+There are linter errors in [`lib/country.rb`](lib/country.rb).  Lets fix them
+using `attr_reader` and `attr_writer`. Use `bin/rake test` to prove that these
+methods are working the same way the previous methods did.
 
 The Ruby method `attr_accessor` takes a symbol as an input and
 creates 'getter' and 'setter' methods with that symbols as their name.
