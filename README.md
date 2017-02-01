@@ -17,13 +17,12 @@ from objects in JS.
     -   [ga-wdi-boston/js-objects-constructors](https://github.com/ga-wdi-boston/js-objects-constructors)
     -   [ga-wdi-boston/js-objects-prototypes](https://github.com/ga-wdi-boston/js-objects-prototypes)
 
--   [ga-wdi-boston/ruby-vs-js](https://github.com/ga-wdi-boston/ruby-vs-js)
+-   [ga-wdi-boston/ruby](https://github.com/ga-wdi-boston/ruby)
 
 ## Objectives
 
 By the end of this, students should be able to:
 
--   Contrast JS objects and Ruby objects.
 -   Define a class for an object in Ruby that assigns attributes in the
     `initialize` constructor.
 -   Create an instance of an object in Ruby using `.new`.
