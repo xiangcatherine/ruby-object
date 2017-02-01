@@ -149,6 +149,8 @@ every Person object should have
 -   a favorite food
 -   a catchphrase
 
+You can test your work using `bin/rake test`.
+
 Then, in the root of this repo, open up a Ruby interpreter with `pry`.
 In the first line, run the command `require_relative 'lib/person.rb'`;
 this will load the contents of the entire `person.rb` file into the terminal,
@@ -325,6 +327,7 @@ they will automatically create an instance variable
 #### Lab: Creating a 'Shape' Class
 
 Create a new file in the `lib` directory and call it `shape.rb`.
+Use `bin/rake test` to check your work.
 Inside that file, define a Shape class with the following instance variables:
 
 -   `num_sides` : set during instantiation, read-only
