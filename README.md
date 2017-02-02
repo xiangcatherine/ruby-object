@@ -17,13 +17,12 @@ from objects in JS.
     -   [ga-wdi-boston/js-objects-constructors](https://github.com/ga-wdi-boston/js-objects-constructors)
     -   [ga-wdi-boston/js-objects-prototypes](https://github.com/ga-wdi-boston/js-objects-prototypes)
 
--   [ga-wdi-boston/ruby-vs-js](https://github.com/ga-wdi-boston/ruby-vs-js)
+-   [ga-wdi-boston/ruby](https://github.com/ga-wdi-boston/ruby)
 
 ## Objectives
 
 By the end of this, students should be able to:
 
--   Contrast JS objects and Ruby objects.
 -   Define a class for an object in Ruby that assigns attributes in the
     `initialize` constructor.
 -   Create an instance of an object in Ruby using `.new`.
@@ -34,6 +33,7 @@ By the end of this, students should be able to:
 1.  [Fork and clone](https://github.com/ga-wdi-boston/meta/wiki/ForkAndClone)
     this repository.
 1.  Install dependencies with `bundle install`.
+1.  Checkout to a new branch `training`.
 
 ## Introduction
 
@@ -149,6 +149,8 @@ every Person object should have
 -   a favorite food
 -   a catchphrase
 
+You can test your work using `bin/rake test`.
+
 Then, in the root of this repo, open up a Ruby interpreter with `pry`.
 In the first line, run the command `require_relative 'lib/person.rb'`;
 this will load the contents of the entire `person.rb` file into the terminal,
@@ -209,27 +211,7 @@ we can create methods specifically for accessing properties.
 These methods are typically called 'getter' and 'setter' methods,
 based on whether they're use to retrieve ('get') or change ('set') properties.
 
-```ruby
-class Country
-  def initialize(name)
-    @name = name
-    @language
-  end
-
-  def language         # 'getter' for @language
-    @language
-  end
-
-  def language=(lang)  # 'setter' for @language
-    @language = lang
-  end
-end
-
-england = Country.new("England")
-england.language=("english")    # invoking the 'setter'
-puts england.language()         # invoking the 'getter'
-# => "english"
-```
+Take a look at the code in [`lib/country.rb`](lib/country.rb)
 
 In the example above,
 the value of the `@language` instance variable was not set
@@ -260,7 +242,7 @@ To check that your code is working correctly,
 go to the root of the repo and run `rspec spec/person_spec.rb`;
 if all tests are passing, you've done it right!
 
-### Helper Methods for Accessing Properties
+### Code-Along: Helper Methods for Accessing Properties
 
 In this last exercise,
 you created two methods for each property specified in the Person class.
@@ -272,19 +254,9 @@ they usually try to find a way to automate and simplify the work.
 And in fact, the developers of Ruby built in a couple of helper methods
 for just this purpose.
 
-```ruby
-class Country
-  attr_accessor :language
-
-  def initialize(name)
-    @name = name
-  end
-end
-
-england = Country.new("England")
-england.language = "english"
-puts england.language
-```
+There are linter errors in [`lib/country.rb`](lib/country.rb).  Lets fix them
+using `attr_reader` and `attr_writer`. Use `bin/rake test` to prove that these
+methods are working the same way the previous methods did.
 
 The Ruby method `attr_accessor` takes a symbol as an input and
 creates 'getter' and 'setter' methods with that symbols as their name.
@@ -325,6 +297,7 @@ they will automatically create an instance variable
 #### Lab: Creating a 'Shape' Class
 
 Create a new file in the `lib` directory and call it `shape.rb`.
+Use `bin/rake test` to check your work.
 Inside that file, define a Shape class with the following instance variables:
 
 -   `num_sides` : set during instantiation, read-only
