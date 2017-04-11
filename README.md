@@ -63,7 +63,7 @@ also known as an object literal, or by using `new` plus a constructor function,
 as follows:
 
 ```javascript
-let x = new Object();
+let x = new Object()
 ```
 
 To create an object that has some particular set of properties,
@@ -73,19 +73,19 @@ define them on that constructor's `prototype`.
 
 ```javascript
 const Rectangle = function(length, width) {
-  this.length = length;
-  this.width = width;
-};
+  this.length = length
+  this.width = width
+}
 
 Rectangle.prototype.area = function(){
-  return this.length * this.width;
-};
+  return this.length * this.width
+}
 
-let firstRect = new Rectangle(3,5);
-firstRect.area();
+let firstRect = new Rectangle(3,5)
+firstRect.area()
 // => 15
-let secondRect = new Rectangle(10,2);
-secondRect.area();
+let secondRect = new Rectangle(10,2)
+secondRect.area()
 // => 20
 ```
 
@@ -116,7 +116,7 @@ secondRect.area
 # => 20
 ```
 
-The `@` indicates that we're referring talking about an _instance variable_,
+The `@` indicates that we're talking about an _instance variable_,
 a property for which each individual instance produced by the class has a
 unique copy.
 In other words,
@@ -165,11 +165,11 @@ In JavaScript, once we'd created an object, we could dynamically add properties
 and methods to it simply by calling their names, like so:
 
 ```javascript
-let hs = {};
-hs.givenName = "Homer";
-hs.surname = "Simpson";
-hs.favoriteFood = "donuts";
-hs.catchphrase = "Doh!";
+let hs = {}
+hs.givenName = "Homer"
+hs.surname = "Simpson"
+hs.favoriteFood = "donuts"
+hs.catchphrase = "Doh!"
 ```
 
 Although it's technically possible to add
@@ -195,9 +195,9 @@ const Country = function (name){
   this.language = null
 }
 
-let brazil = new Country("Brazil");
-brazil.language = "portuguese";
-console.log(brazil.language);       // prints "portuguese"
+let brazil = new Country("Brazil")
+brazil.language = "portuguese"
+console.log(brazil.language)       // prints "portuguese"
 ```
 
 In Ruby, **all instance variables are private** -
@@ -261,7 +261,7 @@ using `attr_reader` and `attr_writer`. Use `bin/rake test` to prove that these
 methods are working the same way the previous methods did.
 
 The Ruby method `attr_accessor` takes a symbol as an input and
-creates 'getter' and 'setter' methods with that symbols as their name.
+creates 'getter' and 'setter' methods with that symbol as their name.
 The code above is _functionally identical_ to the previous code block.
 
 There are three `attr_` methods available for Ruby objects to use.
@@ -298,13 +298,11 @@ they will automatically create an instance variable
 
 #### Lab: Creating a 'Shape' Class
 
-Create a new file in the `lib` directory and call it `shape.rb`.
-Use `bin/rake test` to check your work.
-Inside that file, define a Shape class with the following instance variables:
+In the `lib/shape.rb` file, use `bin/rake test` to check your work and define a Shape class with the following instance variables:
 
--   `num_sides` : set during instantiation, read-only
--   `side_length` : set during instantiation, readable and writeable
--   `color` : NOT set during instantiation, readable and writeable
+-   `num_sides` : set during instantiation, read-only.
+-   `side_length` : set during instantiation, readable and writeable.
+-   `color` : NOT set during instantiation, readable and writeable.
 
 The initalize method should have the following signature:
 `Shape.new(num_sides, side_length)`
@@ -313,7 +311,7 @@ The class should also have an instance method called `calculate_area`,
 which calculates the area of a 'regular' shape (all sides equal)
 for the given side length.
 The [mathematical formula](http://www.mathopenref.com/polygonregulararea.html)
-for this is
+for this is:
 
 ```md
 A = n * s * s / (4 * tangent(PI/n))
@@ -325,7 +323,7 @@ To test whether or not your code is working,
 run the command `bin/rake test spec/shape_spec.rb`
 
 **HINT:** Ruby has a [module for performing
-mathematics](http://ruby-doc.org/core-2.2.0/Math.html) called `Math`; it has a
+mathematics](http://ruby-doc.org/core-2.3.0/Math.html) called `Math`; it has a
 lot of useful methods and properties that can help you out here. The `Math`
 module is one of Ruby's default modules, so Ruby already knows how to find it;
 to add it to your Shape object, and gain access to those methods and
