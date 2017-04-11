@@ -21,7 +21,7 @@ from objects in JS.
 
 ## Objectives
 
-By the end of this, students should be able to:
+By the end of this, developers should be able to:
 
 -   Define a class for an object in Ruby that assigns attributes in the
     `initialize` constructor.
