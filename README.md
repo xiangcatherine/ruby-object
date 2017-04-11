@@ -173,7 +173,7 @@ hs.catchphrase = "Doh!";
 ```
 
 Although it's technically possible to add
-new properties or methods to an existing object,
+new properties or methods to an existing object in Ruby,
 doing so is not very common.
 Generally, all the properties and methods that a new object gets
 will be created when that object is instantiated.
