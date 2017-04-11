@@ -238,6 +238,8 @@ For each of the instance properties you defined earlier,
 create two accessor methods, a 'getter' and a 'setter',
 so that those properties can be manipulated after the object is instantiated.
 
+**Note**: Create both a 'getter' and 'setter' for one property at a time.
+
 To check that your code is working correctly,
 go to the root of the repo and run `bin/rake test spec/person_spec.rb`;
 if all tests are passing, you've done it right!
