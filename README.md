@@ -239,7 +239,7 @@ create two accessor methods, a 'getter' and a 'setter',
 so that those properties can be manipulated after the object is instantiated.
 
 To check that your code is working correctly,
-go to the root of the repo and run `rspec spec/person_spec.rb`;
+go to the root of the repo and run `bin/rake test spec/person_spec.rb`;
 if all tests are passing, you've done it right!
 
 ### Code-Along: Helper Methods for Accessing Properties
@@ -320,7 +320,7 @@ A = n * s * s / (4 * tangent(PI/n))
 where `n` is the number of sides, and `s` is the length of the side.
 
 To test whether or not your code is working,
-run the command `rspec spec/shape_spec.rb`
+run the command `bin/rake test spec/shape_spec.rb`
 
 **HINT:** Ruby has a [module for performing
 mathematics](http://ruby-doc.org/core-2.2.0/Math.html) called `Math`; it has a
