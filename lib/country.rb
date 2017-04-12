@@ -2,22 +2,25 @@
 
 # Country class initialized with a single variable, name
 class Country
+  attr_reader :name
+  attr_accessor :language
+
   def initialize(name)
     @name = name
     @language
   end
 
-  def name
-    @name
-  end
-
-  def language         # 'getter' for @language
-    @language
-  end
-
-  def language=(lang)  # 'setter' for @language
-    @language = lang
-  end
+  # def name
+  #   @name
+  # end
+  #
+  # def language         # 'getter' for @language
+  #   @language
+  # end
+  #
+  # def language=(lang)  # 'setter' for @language
+  #   @language = lang
+  # end
 end
 
 england = Country.new('England')
